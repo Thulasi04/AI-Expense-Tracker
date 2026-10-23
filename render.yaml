@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: flixpense-ai
+    env: python
+    plan: free
+    buildCommand: ./build.sh
+    startCommand: ./start.sh
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite:///./expenses.db
+      - key: HUGGINGFACE_API_KEY
+        sync: false
+      - key: HF_MODEL
+        value: Qwen/Qwen2.5-72B-Instruct
+      - key: PYTHON_VERSION
+        value: 3.11.9
